@@ -1,21 +1,68 @@
 import { Component, inject } from '@angular/core';
-import { FormGroup, ReactiveFormsModule , Validators,FormBuilder} from '@angular/forms';
+import { FormGroup, ReactiveFormsModule , Validators,FormBuilder,AbstractControl, ValidationErrors} from '@angular/forms';
 import { Router, RouterLinkWithHref, RouterOutlet } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user.interface';
 import { v4 as uuidv4 } from 'uuid';
 import Swal from 'sweetalert2';
-import { HttpClient } from '@angular/common/http';
+
+export function validBirthDateValidator(control: AbstractControl): ValidationErrors | null {
+  const inputDate = new Date(control.value);
+  const today = new Date();
+
+  if (inputDate > today) {
+    return { futureDate: true };
+  }
+
+  // Calcular edad
+  let age = today.getFullYear() - inputDate.getFullYear();
+  const monthDiff = today.getMonth() - inputDate.getMonth();
+  const dayDiff = today.getDate() - inputDate.getDate();
+
+  // Ajustar la edad si aún no ha cumplido años este año
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+  }
+
+  // Si es menor de 13 años, marcar error
+  if (age < 13) {
+    return { underage: true };
+  }
+
+  return null; // Es válido
+}
+
+export function validEmailDomainValidator(control: AbstractControl): ValidationErrors | null {
+  const email = control.value;
+
+  if (!email) return null; // Si está vacío, se maneja con `Validators.required`
+
+  // Expresión regular para verificar un dominio válido después del '@'
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!emailRegex.test(email)) {
+    return { invalidDomain: true }; // Retorna un error si el dominio no es válido
+  }
+
+  return null; // Es válido
+}
+
+export function passwordsMatchValidator(group: AbstractControl): ValidationErrors | null {
+  const password = group.get('password')?.value;
+  const confirmPassword = group.get('passwordValidation')?.value;
+  
+  return password === confirmPassword ? null : { passwordsMismatch: true };
+}
 
 
 @Component({
     selector: 'app-sign-up',
     standalone: true,
-    imports: [ReactiveFormsModule, RouterLinkWithHref, RouterOutlet],
+    imports: [ReactiveFormsModule, RouterLinkWithHref],
     templateUrl: './sign-up.component.html'
   })
   export class SignUpComponent {
-    protected userForm!: FormGroup;
+     userForm!: FormGroup;
     private userService = inject(UserService);
     maxDate: string = '';
   
@@ -35,7 +82,9 @@ import { HttpClient } from '@angular/common/http';
         email: ['', [
           Validators.required,
           Validators.email,
-          Validators.maxLength(42)
+          Validators.maxLength(42),
+          validEmailDomainValidator 
+
         ]],
         password: ['', [
           Validators.required,
@@ -43,10 +92,11 @@ import { HttpClient } from '@angular/common/http';
           Validators.maxLength(20),
           Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,20}$/)
         ]],
-        birthDate: ['', Validators.required],
+        birthDate: ['', [Validators.required, validBirthDateValidator]],
         role: ['', Validators.required],
         passwordValidation: ['', Validators.required]
-      });
+      },
+      { validators: passwordsMatchValidator });
     }
   
     register() {
@@ -82,13 +132,47 @@ import { HttpClient } from '@angular/common/http';
         }
   
         if (this.userForm.get('email')?.errors) {
-          Swal.fire({
-            title: "Error",
-            text: "Please provide a valid email address.",
-            icon: "warning"
-          });
-          return;
+          const emailErrors = this.userForm.get('email')?.errors;
+          
+          if (emailErrors?.['invalidDomain']) { // Dominio inválido
+            Swal.fire({
+              title: "Error",
+              text: "Please provide a valid email domain.",
+              icon: "warning"
+            });
+            return;
+          }
+    
+          if (emailErrors?.['email']) { // Formato de email incorrecto
+            Swal.fire({
+              title: "Error",
+              text: "Please provide a valid email address.",
+              icon: "warning"
+            });
+            return;
+          }
         }
+
+            // Validación de Fecha de Nacimiento (Edad mínima)
+    if (this.userForm.get('birthDate')?.errors) {
+      const birthDateErrors = this.userForm.get('birthDate')?.errors;
+      if (birthDateErrors?.['futureDate']) { // Fecha en el futuro
+        Swal.fire({
+          title: "Error",
+          text: "The birth date cannot be in the future.",
+          icon: "warning"
+        });
+        return;
+      }
+      if (birthDateErrors?.['underage']) { // Menor de 13 años
+        Swal.fire({
+          title: "Error",
+          text: "You must be at least 13 years old to register.",
+          icon: "warning"
+        });
+        return;
+      }
+    }
   
         if (this.userForm.get('password')?.errors) {
           const passwordErrors = this.userForm.get('password')?.errors;
@@ -117,13 +201,13 @@ import { HttpClient } from '@angular/common/http';
               icon: "warning"
             });
           }
-          return;
+          return; 
         }
   
-        if (this.userForm.get('password')?.value !== this.userForm.get('passwordValidation')?.value) {
+        if (this.userForm.hasError('passwordsMismatch')) {
           Swal.fire({
             title: "Error",
-            text: "The passwords are not equal.",
+            text: "The passwords do not match.",
             icon: "warning"
           });
           return;

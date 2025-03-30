@@ -119,7 +119,7 @@ async createPlaylist() {
     coverImage: this.playlistCoverImage,
     songs: this.addedSongs,
     isPublic: true
-  };
+  }; 
 
   try {
     await this.createPlayListService.createPlayList(playlistData); 

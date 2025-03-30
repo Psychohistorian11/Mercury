@@ -23,7 +23,7 @@ export const routes: Routes = [
     path: 'sign-up', component: SignUpComponent
   },
   {
-    path: 'home/artist/:id', component: HomeComponent, canActivate: [authGuard], children: [
+    path: 'home/artist/:id', component: HomeComponent, children: [
       { path: 'search/:input', component: SearchMenuComponent },
       { path: 'profile', component: ProfileArtistComponent },
       { path: 'create-playList/:id', component: CreatePlayListComponent},
