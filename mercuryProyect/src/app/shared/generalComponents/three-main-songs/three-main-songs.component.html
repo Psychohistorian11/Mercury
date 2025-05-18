@@ -2,19 +2,20 @@
   class="bg-white p-10 gap-2 rounded-t-lg items-center flex flex-row sm:flex-row sm:items-center
    sm:rounded-2xl sm:p-6 sm:gap-10 sm:h-[285px]">
 
-  <div class="flex flex-col items-center cursor-pointer hover:scale-105 transition-all"
+  <div class="flex flex-col items-center cursor-pointer hover:scale-105 transition-all" data-cy="previous-button"
     (click)="moveLeft(); playSong(currentSong())">
-    <img [src]="leftSong()?.song_image ?? './../../../../assets/songs/logo2.png'"
+    <img [src]="getImageUrl(leftSong()?.song_image)"
       class="w-[80px] h-[80px] sm:w-[150px] sm:h-[150px] md:w-[150px] md:h-[150px] object-cover rounded-2xl transition-all duration-500 ease-in-out"
-      alt="Left Song Image">
+      alt="Left Song Image"
+      data-cy="previous-song-image">
     <div class="text-black text-center mt-2">
       <p class="text-[10px] whitespace-nowrap overflow-hidden text-ellipsis font-bold sm:text-base md:text-sm md:font-bold">{{leftSong()?.song_name ?? 'Unknown Song'}}</p>
       <span class="text-[10px] whitespace-nowrap overflow-hidden sm:text-xs md:text-xs">{{leftSong()?.by ?? 'Unknown Artist'}}</span>
     </div>
   </div>
 
-  <div class="flex flex-col items-center">
-    <img [src]="currentSong()?.song_image ?? './../../../../assets/songs/logo2.png'"
+  <div class="flex flex-col items-center" data-cy="current-button">
+    <img [src]="getImageUrl(currentSong()?.song_image)"
       class="w-[120px] h-[120px] sm:w-[250px] sm:h-[250px] md:w-[200px] md:h-[200px] object-cover rounded-2xl transition-all duration-500 ease-in-out"
       alt="Current Song Image">
     <div class="text-black text-center mt-2">
@@ -24,9 +25,9 @@
     </div>
   </div>
 
-  <div class="flex flex-col items-center cursor-pointer hover:scale-105 transition-all"
+  <div class="flex flex-col items-center cursor-pointer hover:scale-105 transition-all" data-cy="next-button"
     (click)="moveRight(); playSong(currentSong())">
-    <img [src]="rightSong()?.song_image ?? './../../../../assets/songs/logo2.png'"
+    <img [src]="getImageUrl(rightSong()?.song_image)"
       class="w-[80px] h-[80px] sm:w-[150px] sm:h-[150px] md:w-[150px] md:h-[150px] object-cover rounded-2xl transition-all duration-500 ease-in-out"
       alt="Right Song Image">
     <div class="text-black text-center mt-2">

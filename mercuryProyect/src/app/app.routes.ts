@@ -16,12 +16,12 @@ import { CreatePlayListComponent } from './shared/artistComponents/create-play-l
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
-  {
+  /*{
     path: 'login', component: LoginComponent
   },
   {
     path: 'sign-up', component: SignUpComponent
-  },
+  },*/
   {
     path: 'home/artist/:id', component: HomeComponent, children: [
       { path: 'search/:input', component: SearchMenuComponent },
@@ -42,7 +42,7 @@ export const routes: Routes = [
     ]
   },
 
-  {
+  /*{
     path: 'home/:id', component: HomeComponent, canActivate: [authGuard], children: [
       { path: 'search/:input', component: SearchMenuComponent },
       { path: 'profile', component: ProfileUserComponent },
@@ -52,7 +52,7 @@ export const routes: Routes = [
 
 
     ]
-  },
+  },*/
   {
     path: '**', redirectTo: 'login', pathMatch: 'full'
   }

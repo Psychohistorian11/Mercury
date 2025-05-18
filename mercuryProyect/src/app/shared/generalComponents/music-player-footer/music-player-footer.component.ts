@@ -116,11 +116,11 @@ loadSong(song: any): void {
   }
 
   replaySong(data: any){
-    console.log("Data: ",data)
+    /*console.log("Data: ",data)
       this.songAPIService.replaySong(data.id).subscribe({
         next: (response) => {
           console.log("Replay Enviada con exito: ", response)
         }
-      })
+      })*/
   }
 }

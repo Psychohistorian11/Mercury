@@ -6,7 +6,6 @@ import { Song } from './auth/interfaces/song.interface';
 import { Album } from './auth/interfaces/album.interface';
 import { songsOfArtist } from './auth/interfaces/idRelated.interface';
 import { albumsOfArtist } from './auth/interfaces/idRelated.interface';
-import { MusicPlayerService } from './shared/generalServices/music-player.service';
 import { MusicPlayerFooterComponent } from "./shared/generalComponents/music-player-footer/music-player-footer.component";
 
 @Component({
@@ -18,13 +17,13 @@ import { MusicPlayerFooterComponent } from "./shared/generalComponents/music-pla
 export class AppComponent {
   title = 'Mercury';
 
-  constructor(private burnedFilesService: BurnedFilesService,
+  constructor(//private burnedFilesService: BurnedFilesService,
 
   ) {
 
 
 
-    const isDataLoaded = localStorage.getItem('isDataLoaded');
+    /*const isDataLoaded = localStorage.getItem('isDataLoaded');
 
 
     if (!isDataLoaded) {
@@ -74,5 +73,6 @@ export class AppComponent {
     let allAlbumsArtist: albumsOfArtist[] = JSON.parse(localStorage.getItem('albumsArtist') || '[]');
     allAlbumsArtist = allAlbumsArtist.concat(albumsArtist);
     localStorage.setItem('albumsArtist', JSON.stringify(allAlbumsArtist));
-  }
+  }*/
+}
 }

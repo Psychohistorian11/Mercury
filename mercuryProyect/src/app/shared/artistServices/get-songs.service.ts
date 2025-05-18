@@ -172,11 +172,11 @@ export class GetSongsService {
     },
     {
       id: "111",
-      audio: "https://qgjoyydixskkohmjmcme.supabase.co/storage/v1/object/public/Songs/audios/0c2107fd-f13d-4814-ae69-269d48fb92c9/theLastOfTheStark.mp3",
-      image: "https://qgjoyydixskkohmjmcme.supabase.co/storage/v1/object/public/Songs/images/0c2107fd-f13d-4814-ae69-269d48fb92c9/juegodetronos.jpg",
-      by: "Mora",
-      name: "The last of stark",
-      time: "2:38",
+      audio: "https://ofyjtekvfquvjhjtnkoi.supabase.co/storage/v1/object/public/songs/audios/David%20Bowie%20%20Space%20Oddity%20(Official%20Video).mp3",
+      image: "https://ofyjtekvfquvjhjtnkoi.supabase.co/storage/v1/object/public/images/images/SpaceOddity.jpg",
+      by: "David Bowie",
+      name: "Space Oddity",
+      time: "5:04",
       datePublished: "01-11-2024",
       idAlbum: ["23"],
       idGenre: "1"
@@ -186,7 +186,7 @@ export class GetSongsService {
   getRandomSongs() {
     const storedSongs = localStorage.getItem(this.SONG_STORAGE_KEY);
 
-    if (!storedSongs) {
+    /*if (!storedSongs) {
       return [];
     }
 
@@ -194,8 +194,42 @@ export class GetSongsService {
     for (let i = songs.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [songs[i], songs[j]] = [songs[j], songs[i]];
-    }
-    return songs;
+    }*/
+
+
+    return [{
+      id: "111",
+      audio: "https://ofyjtekvfquvjhjtnkoi.supabase.co/storage/v1/object/public/songs/audios/David%20Bowie%20%20Space%20Oddity%20(Official%20Video).mp3",
+      image: "https://ofyjtekvfquvjhjtnkoi.supabase.co/storage/v1/object/public/images/images/SpaceOddity.jpg",
+      by: "David Bowie",
+      name: "Space Oddity",
+      time: "5:04",
+      datePublished: "01-11-2024",
+      idAlbum: ["23"],
+      idGenre: "1"
+  },
+  {
+    id: "111",
+    audio: "https://ofyjtekvfquvjhjtnkoi.supabase.co/storage/v1/object/public/songs/audios/Am%20I%20Dreaming.mp3",
+    image: "https://ofyjtekvfquvjhjtnkoi.supabase.co/storage/v1/object/public/images/images/amIDreaming.jpg",
+    by: "Metro Boomin",
+    name: "Am i Dreaming",
+    time: "5:04",
+    datePublished: "01-11-2024",
+    idAlbum: ["23"],
+    idGenre: "1"
+},
+{
+  id: "111",
+  audio: "https://ofyjtekvfquvjhjtnkoi.supabase.co/storage/v1/object/public/songs/audios/Hummingbird.mp3",
+  image: "https://ofyjtekvfquvjhjtnkoi.supabase.co/storage/v1/object/public/images/images/Hummingbird.jpg",
+  by: "Metro Boomin",
+  name: "Hummingbird",
+  time: "5:04",
+  datePublished: "01-11-2024",
+  idAlbum: ["23"],
+  idGenre: "1"
+}]
   }
 
 

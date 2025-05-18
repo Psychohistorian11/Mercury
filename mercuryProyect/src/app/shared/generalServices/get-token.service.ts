@@ -13,7 +13,7 @@ export class GetTokenService {
   constructor(private cookieService: CookieService, private router: Router) { }
 
   getToken(){
-    const token = this.cookieService.get('token');
+    /*const token = this.cookieService.get('token');
     if (!token) {
       Swal.fire({
         title: "Token Vencido",
@@ -34,7 +34,10 @@ export class GetTokenService {
         icon: "warning"
       });
       this.router.navigate(['/login']);
+    }*/
+    return {
+      sub: '11',
+      role: 'artist'
     }
-    return decodedToken
   }
 }

@@ -53,10 +53,10 @@ export class ThreeMainSongsComponent implements OnInit {
 
   mapSongToThreeSongs(song: any) {
     return {
-      song_name: song.song_name,
+      song_name: song.name,
       by: song.by,
-      song_image: song.song_image,
-      mp3: song.mp3,
+      song_image: song.image,
+      mp3: song.audio,
       datePublished: song.datePublished,
       id: song.id,
       time: song.time,
@@ -84,4 +84,13 @@ export class ThreeMainSongsComponent implements OnInit {
       this.musicPlayerService.setCurrentSong(song)
     }
   }
+
+  getImageUrl(songImage: string | null): string {
+    if (songImage && songImage.startsWith('https://')) {
+      return songImage;
+    } else {
+      return './../../../../assets/songs/logo2.png';
+    }
+  }
+  
 }
