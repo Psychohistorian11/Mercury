@@ -37,16 +37,16 @@ export class HeaderComponent {
 
   onBackMenu() {
     if (this.currentToken.role === 'artist') {
-      this.router.navigate([`/home/artist/${this.currentToken.sub}`]);
+      this.router.navigate([`/home/artist/11`]);
     } else {
-      this.router.navigate([`/home/${this.currentToken.sub}`]);
+      this.router.navigate([`/home/artist/11`]);
     }
   }
 
   onMysongsClick() {
     this.search.deactivateAlarm();
-    this.router.navigate([`/home/artist/${this.currentToken.sub}/my-songs`]);
-    this.closeMenu(); 
+    this.router.navigate([`/home/artist/11/my-songs`]);
+    this.closeMenu();
   }
 
   onProfileClick() {
@@ -55,7 +55,7 @@ export class HeaderComponent {
     } else {
       this.router.navigate([`/home/${this.currentToken.sub}/profile`]);
     }
-    this.closeMenu(); 
+    this.closeMenu();
   }
 
   onExitClick() {
@@ -67,10 +67,10 @@ export class HeaderComponent {
 
   private clearCookies() {
     const allCookies = this.cookieService.getAll();
-    
+
     for (const cookieName in allCookies) {
       if (allCookies.hasOwnProperty(cookieName)) {
-        this.cookieService.delete(cookieName); 
+        this.cookieService.delete(cookieName);
       }
     }
   }

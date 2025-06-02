@@ -41,7 +41,7 @@ export class CreateSongComponent implements OnInit {
   ) {
     this.token = this.getToken.getToken()
     this.registerForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)]],
       audio: [null, Validators.required],
       image: [null, Validators.required],
       genre: [null, Validators.required]

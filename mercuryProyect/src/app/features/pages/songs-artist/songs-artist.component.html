@@ -1,26 +1,24 @@
-<div class="container mx-auto flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between px-4 lg:px-20">
+<div
+  class="container mx-auto flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between px-4 lg:px-20">
 
   <div class="w-full lg:w-1/2 p-6 lg:p-10 mt-2 lg:mt-10 lg:mr-20 lg:ml-20 bg-gray-800 rounded-lg shadow-2xl">
-      
+
     <h2 class="text-1xl lg:text-2xl font-bold text-white  lg:text-left mb-8 uppercase tracking-wide">
       Explora tu Música
     </h2>
 
     <div class="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
-      <a (click)="onMySongsClick()"
-        class="button hvr-underline-from-center text-lg lg:text-lg font-semibold border-b-2
+      <a (click)="onMySongsClick()" class="button hvr-underline-from-center text-lg lg:text-lg font-semibold border-b-2
          border-gray-500 text-gray-300 w-full text-center py-2 cursor-pointer
           hover:text-white hover:border-white transition duration-300 ease-in-out transform hover:scale-105">
         MÚSICA
       </a>
-      <a (click)="onMyAlbumsClick()"
-        class="button hvr-underline-from-center text-lg lg:text-lg font-semibold border-b-2
+      <a (click)="onMyAlbumsClick()" class="button hvr-underline-from-center text-lg lg:text-lg font-semibold border-b-2
          border-gray-500 text-gray-300 w-full text-center py-2 cursor-pointer hover:text-white
           hover:border-white transition duration-300 ease-in-out transform hover:scale-105">
         ÁLBUMES
       </a>
-      <a (click)="whatKindOfNewContent()"
-        class="button hvr-underline-from-center text-lg lg:text-lg font-semibold border-b-2
+      <a (click)="whatKindOfNewContent()" data-cy="crear" class="button hvr-underline-from-center text-lg lg:text-lg font-semibold border-b-2
          border-gray-500 text-gray-300 w-full text-center py-2 cursor-pointer
           hover:text-white hover:border-white transition duration-300 ease-in-out transform hover:scale-105">
         CREAR
@@ -29,7 +27,7 @@
 
     <div class="bg-gray-900 rounded-lg p-4 text-gray-200 mt-4 shadow-inner">
       @if(isMainRoute()){
-        <app-song-list></app-song-list>
+      <app-song-list></app-song-list>
       }
       <router-outlet></router-outlet>
     </div>
@@ -37,14 +35,13 @@
 
   <!-- Sección de Fotografía (solo visible en modo PC) -->
   <div class="hidden lg:flex w-full lg:w-1/2 lg:mt-10 flex-col items-center space-y-6">
-    
+
     <h3 class="button hvr-underline-from-center text-2xl lg:text-2xl font-bold text-white text-center
      uppercase tracking-wide border-b-2 border-gray-500 pb-2 lg:mr-20">
       Fotografía
     </h3>
     <div class="w-full flex justify-center lg:justify-start">
-      <img [src]="selectedSong || './../../../../assets/songs/logo.png'" alt="Song image"
-        class="max-w-xs sm:max-w-md lg:max-w-lg h-auto object-cover border border-gray-700
+      <img [src]="selectedSong || './../../../../assets/songs/logo.png'" alt="Song image" class="max-w-xs sm:max-w-md lg:max-w-lg h-auto object-cover border border-gray-700
          rounded-lg shadow-2xl transition duration-500 ease-in-out transform hover:scale-105">
     </div>
   </div>

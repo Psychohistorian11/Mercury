@@ -1,0 +1,28 @@
+{
+  "name": "mercury-cucumber",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "puppeteer": "^24.8.2"
+  },
+  "cucumber": {
+    "require": [
+      "features/step_definitios/*.js",
+      "features/support/world.js"
+    ]
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "@playwright/test": "^1.52.0",
+    "assert": "^2.1.0",
+    "cucumber-html-reporter": "^7.2.0",
+    "playwright": "^1.52.0"
+  }
+}

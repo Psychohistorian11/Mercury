@@ -3,7 +3,8 @@
     <ul class="navbar list-none flex items-center  ">
 
       <li class="navbar-item flex items-center">
-        <a id="logo_of_page" (click)="onBackMenu()" class="flex items-center text-white no-underline cursor-pointer">
+        <a id="logo_of_page" (click)="onBackMenu()" class="flex items-center text-white no-underline cursor-pointer"
+          data-cy="logo">
           <img src="../../../../assets/songs/logo.png" alt="Logo" class="w-12 h-12 ml-2 rounded-full object-cover">
 
           <span class="ml-2 text-2xl font-bold hidden md:inline">Mercury</span>
@@ -17,7 +18,7 @@
 
 
       <li class="navbar-item  items-center space-x-4 relative hidden md:flex mr-4">
-        <a *ngIf="showLaboratory" (click)="onMysongsClick()"
+        <a (click)="onMysongsClick()" data-cy="lab"
           class="text-gray-400 hover:text-white transition-colors text-lg cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5">
@@ -66,7 +67,7 @@
           class="text-gray-400 hover:text-white transition-colors text-lg cursor-pointer">Perfil</a>
       </li>
       <li>
-        <a  (click)="onExitClick()"
+        <a (click)="onExitClick()"
           class="text-gray-400 hover:text-white transition-colors text-lg cursor-pointer">Cerrar sesión</a>
       </li>
     </ul>

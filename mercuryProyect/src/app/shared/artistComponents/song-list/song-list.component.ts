@@ -24,7 +24,7 @@ import { MusicPlayerService } from '../../generalServices/music-player.service';
   templateUrl: './song-list.component.html'
 })
 export class SongListComponent {
-  private token :any
+  private token: any
   private searchQuery: string = this.searchService.getInputLocalStorage();
   private genreFiltredQuery: string = this.searchService.getGenreFiltredLocalStorage()
   private publicationDateQuery: string = this.searchService.getPublicationDateFiltredLocalStorage()
@@ -158,33 +158,25 @@ export class SongListComponent {
     this.router.navigate([`/home/artist/${this.token.sub}/my-songs/create-song`]);
   }
 
-  getSongsByCurrentArtist(){
-    this.songAPIservice.getSongsFromArtist(this.token.sub).subscribe({
-      next: (response) => {
-        this.songs.set(response.data)
-          
-      },
-      error: (error) => {
-          console.log(error)
-      }
-    })
-  }
-
-
- /* async searchSongs(input: string) {
-    const songsByInput = this.getSongsService.getSongsFilteredByInput(input)
-    this.songs.set(songsByInput)
+  getSongsByCurrentArtist() {
 
   }
 
-  searchSongsFiltredGenre(idGenre: string) {
-    const songsFiltredGenre = this.getSongsService.getSongsFiltredByGenre(idGenre)
-    this.songs.set(songsFiltredGenre)
-    this.cdRef.detectChanges();
-  }
 
-  searchSongsFiltredPublicationDate(date: string) {
-    const songsFiltredPublicationDate = this.getSongsService.getSongsFiltredByPublicationDate(date)
-    this.songs.set(songsFiltredPublicationDate)
-  }*/
+  /* async searchSongs(input: string) {
+     const songsByInput = this.getSongsService.getSongsFilteredByInput(input)
+     this.songs.set(songsByInput)
+ 
+   }
+ 
+   searchSongsFiltredGenre(idGenre: string) {
+     const songsFiltredGenre = this.getSongsService.getSongsFiltredByGenre(idGenre)
+     this.songs.set(songsFiltredGenre)
+     this.cdRef.detectChanges();
+   }
+ 
+   searchSongsFiltredPublicationDate(date: string) {
+     const songsFiltredPublicationDate = this.getSongsService.getSongsFiltredByPublicationDate(date)
+     this.songs.set(songsFiltredPublicationDate)
+   }*/
 }

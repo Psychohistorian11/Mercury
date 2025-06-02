@@ -1,0 +1,25 @@
+{
+  "name": "mercury-serenity",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --require-module ts-node/register --require features/**/*.ts --format json:reports/report.json",
+    "report": "node generate-report.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "@serenity-js/assertions": "^3.31.15",
+    "@serenity-js/core": "^3.31.15",
+    "@serenity-js/playwright": "^3.31.15",
+    "@serenity-js/web": "^3.31.15",
+    "@types/node": "^22.15.19",
+    "cucumber-html-reporter": "^7.2.0",
+    "playwright": "^1.52.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

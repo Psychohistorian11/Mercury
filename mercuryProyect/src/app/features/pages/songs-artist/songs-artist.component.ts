@@ -15,7 +15,7 @@ import { GetTokenService } from '../../../shared/generalServices/get-token.servi
 @Component({
   selector: 'app-songs-artist',
   standalone: true,
-  imports: [SongListComponent, RouterOutlet, RouterLink, CreateSongComponent],
+  imports: [SongListComponent, RouterOutlet,],
   templateUrl: './songs-artist.component.html'
 })
 export class SongsArtistComponent {
@@ -29,10 +29,7 @@ export class SongsArtistComponent {
     private playSongService: PlaySongService,
     //private user: GetUserService,
     private token: GetTokenService,
-    private search: SearchService) {
-    this.imageSubscription = this.playSongService.image$.subscribe((image) => {
-      this.selectedSong = image;
-    });
+  ) {
 
     this.currentToken = this.token.getToken()
   }
@@ -78,7 +75,6 @@ export class SongsArtistComponent {
   }
 
   onMySongsClick() {
-    this.search.deactivateAlarm()
     this.router.navigate([`home/artist/${this.currentToken.sub}/my-songs`])
   }
 
@@ -94,7 +90,6 @@ export class SongsArtistComponent {
 
   selectAlbum() {
     Swal.close();
-    this.search.activateCreateAlbum()
     this.router.navigate([`/home/artist/${this.currentToken.sub}/my-songs/create-album`]);
   }
 

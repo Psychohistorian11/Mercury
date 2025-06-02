@@ -1,0 +1,499 @@
+[
+  {
+    "description": "  Como artista\n  Quiero completar un formulario para registrar un sencillo",
+    "elements": [
+      {
+        "description": "",
+        "id": "crear-canción;intentar-enviar-el-formulario-vacío",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Intentar enviar el formulario vacío",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2685602800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "el usuario está en la página de creación de canción",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5564762800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "hace clic en \"Publicar sencillo\" sin llenar los campos",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 596658999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "el formulario no debería enviarse",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 292990999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 77249899
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "crear-canción;validar-que-no-acepta-números-como-nombre",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Validar que no acepta números como nombre",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 112562000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "el usuario está en la página de creación de canción",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1623669399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "ingresa \"12345\" en el campo nombre",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 81356999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "hace clic en \"Publicar sencillo\"",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 629727399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "el formulario no debería enviarse",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 287095300
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 60934000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "crear-canción;exceder-el-límite-de-caracteres-permitidos",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Exceder el límite de caracteres permitidos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 112726900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "el usuario está en la página de creación de canción",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2724828499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "ingresa un nombre con 101 caracteres en el campo",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 401880499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "hace clic en \"Publicar sencillo\"",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 573691999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "el formulario no debería enviarse",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 287927399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 63036599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "crear-canción;intentar-publicar-una-canción-con-nombre-repetido",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Intentar publicar una canción con nombre repetido",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 117050900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 23,
+            "name": "el usuario está en la página de creación de canción",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1801045799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "ingresa \"Summer\" en el campo nombre",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55343499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "sube un archivo de audio diferente",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:72"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 30289000,
+              "error_message": "locator.fill: Error: Input of type \"file\" cannot be filled\nCall log:\n\u001b[2m  - waiting for locator(':light(input[type=\"file\"][accept=\"audio/*\"])')\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"file\" required=\"\" accept=\"audio/*\" class=\"px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded hover:border-gray-600 focus:border-blue-500 duration-200 bg-gray-800 text-white w-full\"/>\u001b[22m\n\u001b[2m    - fill(\"test-data/nuevo_audio.mp3\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n    at PlaywrightPageElement.enterValue (C:\\Users\\crist\\root\\projects\\MercuryProject\\mercury-serenity\\node_modules\\@serenity-js\\playwright\\src\\screenplay\\models\\PlaywrightPageElement.ts:28:24)\n    at async PerformActivities.perform (C:\\Users\\crist\\root\\projects\\MercuryProject\\mercury-serenity\\node_modules\\@serenity-js\\core\\src\\screenplay\\abilities\\PerformActivities.ts:60:13)\n    at async World.<anonymous> (C:\\Users\\crist\\root\\projects\\MercuryProject\\mercury-serenity\\features\\step_definitions\\create_song_steps.ts:73:5)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "hace clic en \"Publicar sencillo\"",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:52"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "debería mostrar error \"Nombre ya existe\"",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:79"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "el formulario no debería enviarse",
+            "match": {
+              "location": "features\\step_definitions\\create_song_steps.ts:35"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 71560199
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "crear-canción",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Crear canción",
+    "tags": [],
+    "uri": "features\\crear_cancion.feature"
+  },
+  {
+    "description": "  Como usuario\n  Quiero poder controlar la reproducción de canciones\n  Para disfrutar de mi música favorita",
+    "elements": [
+      {
+        "description": "",
+        "id": "reproducción-de-música;reproducir-canción-seleccionada",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Reproducir canción seleccionada",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 107432899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "el usuario está en la página principal",
+            "match": {
+              "location": "features\\step_definitions\\music_steps.ts:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3838174800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "hago clic en la imagen de una canción",
+            "match": {
+              "location": "features\\step_definitions\\music_steps.ts:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 466266199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "la canción debería comenzar a reproducirse",
+            "match": {
+              "location": "features\\step_definitions\\music_steps.ts:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82991100
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 60809799
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "reproducción-de-música;pausar-canción-en-reproducción",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Pausar canción en reproducción",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 107569600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "tengo una canción reproduciéndose",
+            "match": {
+              "location": "features\\step_definitions\\music_steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3230509700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "hago clic en el botón de pausa",
+            "match": {
+              "location": "features\\step_definitions\\music_steps.ts:66"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 205751499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "la canción debería pausarse",
+            "match": {
+              "location": "features\\step_definitions\\music_steps.ts:73"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 75380700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "el icono debería cambiar a \"play\"",
+            "match": {
+              "location": "features\\step_definitions\\music_steps.ts:79"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 77017699
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 67879999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "reproducción-de-música",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Reproducción de música",
+    "tags": [],
+    "uri": "features\\reproducir_musica.feature"
+  }
+]
